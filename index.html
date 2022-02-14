@@ -15,11 +15,37 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header>
+  <header class="container">
+    <h4 class="pad1rem">Code Journal</h4>
   </header>
   <main>
-    <div data-view="entry-form">
-      <form action="">
+    <div data-view="entry-form" class="container">
+      <form action="" class="">
+        <h1 class="pad1rem">New Entry</h1>
+        <!-- img from photo URL -->
+        <img src="images/placeholder-image-square.jpg" alt="placeholder image" class="pad1rem">
+        <div class="input-container pad1rem">
+          <label for="Title">Title</label>
+          <div class="input-field">
+            <input type="text">
+          </div>
+        </div>
+        <div class="input-container pad1rem">
+          <label for="Photo-URL">Photo URL</label>
+          <div class="input-field ">
+            <input type="text">
+          </div>
+        </div>
+        <div class="input-container pad1rem">
+          <label for="Notes">Notes</label>
+          <div class="input-field">
+            <input type="text" class="multiple-line">
+          </div>
+        </div>
+        <div class="input-container">
+          <button>SAVE</button>
+        </div>
+
       </form>
     </div>
   </main>
