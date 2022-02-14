@@ -13,36 +13,42 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500;600&display=swap" rel="stylesheet">
+
 </head>
 <body>
-  <header class="container">
-    <h4 class="pad1rem">Code Journal</h4>
+  <header class="">
+    <div class="header container">
+      <h4 class="column-full">Code Journal</h4>
+    </div>
   </header>
-  <main>
-    <div data-view="entry-form" class="container">
+  <main class="container">
+    <h1 class="column-full">New Entry</h1>
+    <div data-view="entry-form" class="">
       <form action="" class="">
-        <h1 class="pad1rem">New Entry</h1>
-        <!-- img from photo URL -->
-        <img src="images/placeholder-image-square.jpg" alt="placeholder image" class="pad1rem">
-        <div class="input-container pad1rem">
-          <label for="Title">Title</label>
-          <div class="input-field">
-            <input type="text">
+        <div class="two-column row ">
+          <div class="img column-half">
+            <img src="images/placeholder-image-square.jpg" alt="placeholder image" class="">
+          </div>
+          <div class="single-line-input-container column-half">
+            <div class="input-field">
+              <label for="Title">Title</label>
+              <input type="text">
+            </div>
+            <div class="input-field">
+              <label for="Photo-URL">Photo URL</label>
+              <input type="text">
+            </div>
           </div>
         </div>
-        <div class="input-container pad1rem">
-          <label for="Photo-URL">Photo URL</label>
-          <div class="input-field ">
-            <input type="text">
-          </div>
-        </div>
-        <div class="input-container pad1rem">
+        <div class="input-container column-full ">
           <label for="Notes">Notes</label>
           <div class="input-field">
-            <input type="text" class="multiple-line">
+            <textarea name="" id="" rows="8"></textarea>
           </div>
         </div>
-        <div class="input-container">
+        <div class="input-container column-full">
           <button>SAVE</button>
         </div>
 
