@@ -75,4 +75,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
     $ulEntries.append(renderEntry(data.entries[i]));
   }
+
+  var $exampleEntry = document.querySelectorAll('.example-entry');
+  $exampleEntry.remove();
 });
