@@ -22,7 +22,6 @@ function handleSubmit(event) {
   };
 
   data.nextEntryId++;
-
   entries.push(entryData);
   data.entries.unshift(entryData);
 
