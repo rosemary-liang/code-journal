@@ -34,9 +34,9 @@ $form.addEventListener('submit', handleSubmit);
 // create DOM tree
 var $ulEntries = document.querySelector('ul');
 
-function renderEntries(entry) {
+function renderEntry(entry) {
   var liEntry = document.createElement('li');
-  liEntry.setAttribute('class', 'entry column-full column-half');
+  liEntry.setAttribute('class', 'entry column-full ');
   $ulEntries.appendChild(liEntry);
 
   var divImg = document.createElement('div');
@@ -68,11 +68,11 @@ function renderEntries(entry) {
   paragraphNotes.textContent = entry.notes;
   divNotes.appendChild(paragraphNotes);
 
+  return liEntry;
 }
 
-renderEntries({
-  title: 'titletest',
-  photo: 'phototest',
-  notes: 'notestest',
-  entryId: data.nextEntryId
+window.addEventListener('DOMContentLoaded', function (event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    $ulEntries.append(renderEntry(data.entries[i]));
+  }
 });
