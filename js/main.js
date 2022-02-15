@@ -30,3 +30,49 @@ function handleSubmit(event) {
 }
 
 $form.addEventListener('submit', handleSubmit);
+
+// create DOM tree
+var $ulEntries = document.querySelector('ul');
+
+function renderEntries(entry) {
+  var liEntry = document.createElement('li');
+  liEntry.setAttribute('class', 'entry column-full column-half');
+  $ulEntries.appendChild(liEntry);
+
+  var divImg = document.createElement('div');
+  divImg.setAttribute('class', 'user-img column-half');
+  liEntry.appendChild(divImg);
+
+  var img = document.createElement('img');
+  img.setAttribute('alt', 'user-img');
+  img.setAttribute('src', entry.photo);
+  divImg.appendChild(img);
+
+  var divEntryContainer = document.createElement('div');
+  divEntryContainer.setAttribute('class', 'entry-text-container column-half');
+  liEntry.appendChild(divEntryContainer);
+
+  var divTitle = document.createElement('div');
+  divTitle.setAttribute('class', 'user-title');
+  divEntryContainer.appendChild(divTitle);
+
+  var heading3 = document.createElement('h3');
+  heading3.textContent = entry.title;
+  divTitle.appendChild(heading3);
+
+  var divNotes = document.createElement('div');
+  divNotes.setAttribute('class', 'user-notes');
+  divEntryContainer.appendChild(divNotes);
+
+  var paragraphNotes = document.createElement('p');
+  paragraphNotes.textContent = entry.notes;
+  divNotes.appendChild(paragraphNotes);
+
+}
+
+renderEntries({
+  title: 'titletest',
+  photo: 'phototest',
+  notes: 'notestest',
+  entryId: data.nextEntryId
+});
