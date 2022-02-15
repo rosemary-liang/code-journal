@@ -51,24 +51,3 @@ input {
 input.multiple-line {
   height: 7rem;
 }
-
-/* utility classes */
-.pad05rem {
-  padding: 0.5rem;
-}
-
-.pad1rem {
-  padding: 1rem;
-}
-
-.margin05rem {
-  margin: 0.5rem;
-}
-
-.marginv05rem {
-  margin: 0.5rem 0;
-}
-
-.margin1rem {
-  margin: 1rem;
-}
