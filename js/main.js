@@ -25,6 +25,8 @@ function handleSubmit(event) {
 
   entries.push(entryData);
   data.entries.unshift(entryData);
+
+  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
 }
 
 $form.addEventListener('submit', handleSubmit);
