@@ -11,13 +11,14 @@ body {
   background-color: whitesmoke;
 }
 
-h4 {
+h1 {
   color: white;
   font-size: 2rem;
   font-weight: lighter;
   font-family: "Proza Libre", sans-serif;
 }
 
+/* data-view entry form start */
 label {
   font-weight: 600;
 }
@@ -43,4 +44,30 @@ button {
   border-radius: 3px;
   border: none;
   margin: 1rem 0;
+}
+
+/* data-view entries start */
+li.entry {
+  display: flex;
+}
+
+.entry-text-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.user-title > h3 {
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.user-notes > p {
+  font-size: 0.9rem;
+}
+
+img {
+  object-fit: cover;
+  object-position: 50% 50%;
 }

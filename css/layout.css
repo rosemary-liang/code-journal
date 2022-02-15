@@ -51,3 +51,11 @@ input {
 input.multiple-line {
   height: 7rem;
 }
+
+li {
+  margin: 2rem 0;
+}
+
+ul {
+  padding: 0;
+}
