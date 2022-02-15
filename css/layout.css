@@ -32,6 +32,8 @@ img {
   margin: 1rem 0;
 }
 
+/* media rule */
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 900px;
@@ -63,3 +65,5 @@ li {
 ul {
   padding: 0;
 }
+
+/* utility classes */

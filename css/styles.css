@@ -45,14 +45,23 @@ textarea {
 button {
   background-color: purple;
   color: white;
-  float: right;
   padding: 0.4rem 0.75rem;
   border-radius: 3px;
   border: none;
-  margin: 1rem 0;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
 }
 
 /* data-view entries start */
+.entries-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 li.entry {
   display: flex;
 }

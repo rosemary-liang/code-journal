@@ -18,7 +18,7 @@
 
 </head>
 <body>
-  <header class="">
+  <header class="nav">
     <div class="header container">
       <h1 class="column-full">Code Journal</h1>
       <a href="#entries">Entries</a>
@@ -61,14 +61,22 @@
             id="user-notes" rows="8"></textarea>
           </div>
         </div>
-        <div class="input-container column-full">
-          <button>SAVE</button>
+        <div class="input-container column-full button">
+          <button class="save">SAVE</button>
         </div>
 
       </form>
     </div>
     <!-- data-view entries -->
-    <div data-view="entries">
+    <div data-view="entries" class="">
+      <div class="row entries-header column-full">
+        <div>
+          <h2>Entries</h2>
+        </div>
+        <div class="">
+          <button class="new">NEW</button>
+        </div>
+      </div>
       <ul>
       </ul>
     </div>
