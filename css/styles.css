@@ -7,6 +7,12 @@ header {
   height: 3rem;
 }
 
+.header > a {
+  color: white;
+  text-decoration: none;
+  margin: 0 1rem;
+}
+
 body {
   background-color: whitesmoke;
 }
