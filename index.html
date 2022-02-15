@@ -13,11 +13,58 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500;600&display=swap" rel="stylesheet">
+
 </head>
 <body>
-  <header>
+  <header class="">
+    <div class="header container">
+      <h4 class="column-full">Code Journal</h4>
+    </div>
   </header>
-  <main>
+  <main class="container">
+    <h1 class="column-full">New Entry</h1>
+    <div data-view="entry-form" class="">
+      <form action="" class="">
+        <div class="two-column row ">
+          <div class="img column-half">
+            <img src="images/placeholder-image-square.jpg" alt="placeholder image" class="">
+          </div>
+          <div class="single-line-input-container column-half">
+            <div class="input-field">
+              <label for="user-title">Title</label>
+              <input
+              required
+              name="title"
+              type="text"
+              id="user-title">
+            </div>
+            <div class="input-field">
+              <label for="user-photo-url">Photo URL</label>
+              <input
+              required
+              name="photo"
+              type="text"
+              id="user-photo-url">
+            </div>
+          </div>
+        </div>
+        <div class="input-container column-full ">
+          <label for="user-notes">Notes</label>
+          <div class="input-field">
+            <textarea
+            required
+            name="notes"
+            id="user-notes" rows="8"></textarea>
+          </div>
+        </div>
+        <div class="input-container column-full">
+          <button>SAVE</button>
+        </div>
+
+      </form>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

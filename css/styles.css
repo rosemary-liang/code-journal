@@ -1,0 +1,46 @@
+* {
+  font-family: "Open Sans", sans-serif;
+}
+
+header {
+  background-color: rgb(87, 0, 128);
+  height: 3rem;
+}
+
+body {
+  background-color: whitesmoke;
+}
+
+h4 {
+  color: white;
+  font-size: 2rem;
+  font-weight: lighter;
+  font-family: "Proza Libre", sans-serif;
+}
+
+label {
+  font-weight: 600;
+}
+
+.input-field {
+  margin-bottom: 1rem;
+}
+
+input,
+textarea {
+  margin: 0.75rem 0;
+}
+
+textarea {
+  width: 100%;
+}
+
+button {
+  background-color: purple;
+  color: white;
+  float: right;
+  padding: 0.4rem 0.75rem;
+  border-radius: 3px;
+  border: none;
+  margin: 1rem 0;
+}
