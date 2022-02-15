@@ -17,11 +17,14 @@ function handleSubmit(event) {
   var entryData = {
     title: title,
     photo: photo,
-    notes: notes
+    notes: notes,
+    entryId: data.nextEntryId
   };
 
-  entries.push(entryData);
+  data.nextEntryId++;
 
+  entries.push(entryData);
+  data.entries.unshift(entryData);
 }
 
 $form.addEventListener('submit', handleSubmit);
