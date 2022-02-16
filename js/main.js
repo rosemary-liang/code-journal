@@ -101,6 +101,7 @@ function handleEntryFormView(event) {
 
 // show entries page
 var $saveButton = document.querySelector('button.save');
+
 $saveButton.addEventListener('click', handleEntriesView);
 
 function handleEntriesView(event) {
@@ -111,4 +112,9 @@ function handleEntriesView(event) {
       $views[i].className = 'view hidden';
     }
   }
+}
+
+var $noEntriesMsg = document.querySelector('p.center');
+if (data.entries.length >= 1) {
+  $noEntriesMsg.classList = 'center hidden';
 }
