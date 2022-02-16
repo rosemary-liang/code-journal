@@ -81,11 +81,25 @@ window.addEventListener('DOMContentLoaded', function (event) {
 // show entry form
 var $views = document.querySelectorAll('.view');
 var $newButton = document.querySelector('a.new-button');
-$newButton.addEventListener('click', handleEntryForm);
+$newButton.addEventListener('click', handleEntryFormView);
 
-function handleEntryForm(event) {
+function handleEntryFormView(event) {
   for (var i = 0; i < $views.length; i++) {
     if ($views[i].getAttribute('data-view') === 'entry-form') {
+      $views[i].className = 'view';
+    } else {
+      $views[i].className = 'view hidden';
+    }
+  }
+}
+
+// show entries page
+var $saveButton = document.querySelector('button.save');
+$saveButton.addEventListener('click', handleEntriesView);
+
+function handleEntriesView(event) {
+  for (var i = 0; i < $views.length; i++) {
+    if ($views[i].getAttribute('data-view') === 'entries') {
       $views[i].className = 'view';
     } else {
       $views[i].className = 'view hidden';
