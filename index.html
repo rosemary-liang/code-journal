@@ -14,18 +14,20 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;500;600&display=swap" rel="stylesheet">
 
 </head>
 <body>
-  <header class="">
+  <header class="nav">
     <div class="header container">
-      <h4 class="column-full">Code Journal</h4>
+      <h1 class="column-full">Code Journal</h1>
+      <a href="index.html">Entries</a>
     </div>
   </header>
   <main class="container">
-    <h1 class="column-full">New Entry</h1>
-    <div data-view="entry-form" class="">
+    <!-- data-view entry form -->
+    <div data-view="entry-form" class="view hidden">
+      <h2 class="column-full">New Entry</h2>
       <form action="" class="">
         <div class="two-column row ">
           <div class="img column-half">
@@ -59,11 +61,25 @@
             id="user-notes" rows="8"></textarea>
           </div>
         </div>
-        <div class="input-container column-full">
-          <button>SAVE</button>
+        <div class="input-container column-full button">
+          <button class="save">SAVE</button>
         </div>
 
       </form>
+    </div>
+    <!-- data-view entries -->
+    <div data-view="entries" class="view">
+      <div class="row entries-header column-full">
+        <div>
+          <h2>Entries</h2>
+        </div>
+        <div class="">
+          <a href="#newentry" class="new-button">NEW</a>
+        </div>
+      </div>
+      <p class="center">No entries have been recorded.</p>
+      <ul>
+      </ul>
     </div>
   </main>
   <script src="js/data.js"></script>
