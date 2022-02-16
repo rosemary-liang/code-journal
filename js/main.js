@@ -27,6 +27,7 @@ function handleSubmit(event) {
   data.entries.unshift(entryData);
   // submit new entry will show without reloading
   $ulEntries.prepend(renderEntry(entryData));
+  $noEntriesMsg.classList = 'center hidden';
 
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
@@ -45,7 +46,7 @@ function renderEntry(entry) {
   $ulEntries.appendChild(liEntry);
 
   var divImg = document.createElement('div');
-  divImg.setAttribute('class', 'user-img column-half');
+  divImg.setAttribute('class', 'user-img column-half column-full');
   liEntry.appendChild(divImg);
 
   var img = document.createElement('img');
@@ -54,7 +55,7 @@ function renderEntry(entry) {
   divImg.appendChild(img);
 
   var divEntryContainer = document.createElement('div');
-  divEntryContainer.setAttribute('class', 'entry-text-container column-half');
+  divEntryContainer.setAttribute('class', 'entry-text-container column-half column-full');
   liEntry.appendChild(divEntryContainer);
 
   var divTitle = document.createElement('div');

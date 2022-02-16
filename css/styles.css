@@ -76,6 +76,11 @@ li.entry {
   display: flex;
 }
 
+li {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .entry-text-container {
   display: flex;
   flex-direction: column;
