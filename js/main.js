@@ -9,6 +9,7 @@ $photoURL.addEventListener('input', function (event) {
   $img.setAttribute('src', $photoURL.value);
 });
 
+// submit callback function
 function handleSubmit(event) {
   event.preventDefault();
   var title = $form.elements.title.value;
@@ -24,14 +25,18 @@ function handleSubmit(event) {
   data.nextEntryId++;
   entries.push(entryData);
   data.entries.unshift(entryData);
+  // submit new entry will show without reloading
+  $ulEntries.prepend(renderEntry(entryData));
 
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
+
+  return entryData;
 }
 
 $form.addEventListener('submit', handleSubmit);
 
-// create DOM tree
+// render entry & create DOM tree
 var $ulEntries = document.querySelector('ul');
 
 function renderEntry(entry) {
@@ -69,6 +74,7 @@ function renderEntry(entry) {
   divNotes.appendChild(paragraphNotes);
 
   return liEntry;
+
 }
 
 // append entries
