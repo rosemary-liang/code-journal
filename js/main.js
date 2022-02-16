@@ -132,11 +132,17 @@ if (data.entries.length >= 1) {
 $ulEntries.addEventListener('click', handleEdit);
 
 function handleEdit(event) {
-  for (var i = 0; i < $views.length; i++) {
-    if ($views[i].getAttribute('data-view') === 'entry-form') {
-      $views[i].className = 'view';
-    } else {
-      $views[i].className = 'view hidden';
+  if (event.target.matches('button')) {
+    for (var i = 0; i < $views.length; i++) {
+      if ($views[i].getAttribute('data-view') === 'entry-form') {
+        $views[i].className = 'view';
+      } else {
+        $views[i].className = 'view hidden';
+      }
     }
+
+    var $closestLi = event.target.closest('li.entry');
+    data.editing = $closestLi.getAttribute('data-entry-id');
+
   }
 }
