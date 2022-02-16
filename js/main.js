@@ -40,7 +40,7 @@ var $ulEntries = document.querySelector('ul');
 
 function renderEntry(entry) {
   var liEntry = document.createElement('li');
-  liEntry.setAttribute('class', 'entry column-full ');
+  liEntry.setAttribute('class', 'entry column-full');
   $ulEntries.appendChild(liEntry);
 
   var divImg = document.createElement('div');
@@ -63,6 +63,14 @@ function renderEntry(entry) {
   var heading3 = document.createElement('h3');
   heading3.textContent = entry.title;
   divTitle.appendChild(heading3);
+
+  var editButton = document.createElement('button');
+  editButton.setAttribute('class', 'btn');
+  divTitle.appendChild(editButton);
+
+  var iconPencil = document.createElement('i');
+  iconPencil.setAttribute('class', 'fas fa-pen');
+  editButton.appendChild(iconPencil);
 
   var divNotes = document.createElement('div');
   divNotes.setAttribute('class', 'user-notes');
