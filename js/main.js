@@ -79,12 +79,12 @@ function renderEntry(entry) {
   paragraphNotes.textContent = entry.notes;
   divNotes.appendChild(paragraphNotes);
 
+  // set entryId in DOM
   var entryId = entry.entryId;
   liEntry.setAttribute('data-entry-id', entryId);
   entryId++;
 
   return liEntry;
-
 }
 
 // append entries
@@ -127,4 +127,16 @@ function handleEntriesView(event) {
 var $noEntriesMsg = document.querySelector('p.center');
 if (data.entries.length >= 1) {
   $noEntriesMsg.classList = 'center hidden';
+}
+
+$ulEntries.addEventListener('click', handleEdit);
+
+function handleEdit(event) {
+  for (var i = 0; i < $views.length; i++) {
+    if ($views[i].getAttribute('data-view') === 'entry-form') {
+      $views[i].className = 'view';
+    } else {
+      $views[i].className = 'view hidden';
+    }
+  }
 }
