@@ -140,9 +140,30 @@ function handleEdit(event) {
         $views[i].className = 'view hidden';
       }
     }
-
+    // assign entry id to data.editing
     var $closestLi = event.target.closest('li.entry');
     data.editing = $closestLi.getAttribute('data-entry-id');
 
+    // prepopulate edit entry, change the 'value' attribute
+    // use $closestLi
+    // get title input element & value
+    // get pic input element & value
+    // get note input element & value
+
+    // $photoURL
+    var $title = document.querySelector('input[name="title"]');
+    var $notes = document.querySelector('textarea');
+
+    // for data.editing, go to entries with MATCHES entryId and
+    // find value of fields and assign to value
+
+    for (var j = 0; j < data.entries.length; j++) {
+      if (data.entries[j].entryId === parseInt(data.editing)) {
+        var editEntry = data.entries[j];
+        $title.value = editEntry.title;
+        $photoURL.value = editEntry.photo;
+        $notes.value = editEntry.notes;
+      }
+    }
   }
 }
