@@ -41,7 +41,6 @@ var $ulEntries = document.querySelector('ul');
 function renderEntry(entry) {
   var liEntry = document.createElement('li');
   liEntry.setAttribute('class', 'entry column-full');
-  $ulEntries.appendChild(liEntry);
 
   var divImg = document.createElement('div');
   divImg.setAttribute('class', 'user-img column-half column-full');
@@ -79,6 +78,10 @@ function renderEntry(entry) {
   var paragraphNotes = document.createElement('p');
   paragraphNotes.textContent = entry.notes;
   divNotes.appendChild(paragraphNotes);
+
+  var entryId = entry.entryId;
+  liEntry.setAttribute('data-entry-id', entryId);
+  entryId++;
 
   return liEntry;
 
