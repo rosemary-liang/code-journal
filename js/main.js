@@ -3,7 +3,6 @@
 var $photoURL = document.getElementById('user-photo-url');
 var $img = document.querySelector('img');
 var $form = document.querySelector('form');
-var entries = [];
 
 $photoURL.addEventListener('input', function (event) {
   $img.setAttribute('src', $photoURL.value);
@@ -23,7 +22,6 @@ function handleSubmit(event) {
   };
 
   data.nextEntryId++;
-  entries.push(entryData);
   data.entries.unshift(entryData);
   // submit new entry will show without reloading
   $ulEntries.prepend(renderEntry(entryData));
