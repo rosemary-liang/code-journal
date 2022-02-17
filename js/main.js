@@ -3,10 +3,17 @@
 var $photoURL = document.getElementById('user-photo-url');
 var $img = document.querySelector('img');
 var $form = document.querySelector('form');
+var $ulEntries = document.querySelector('ul');
 
 $photoURL.addEventListener('input', function (event) {
   $img.setAttribute('src', $photoURL.value);
 });
+var $noEntriesMsg = document.querySelector('p.center');
+if (data.entries.length >= 1) {
+  $noEntriesMsg.classList = 'center hidden';
+}
+
+var $saveButton = document.querySelector('button.save');
 
 // submit callback function
 function handleSubmit(event) {
@@ -36,7 +43,6 @@ function handleSubmit(event) {
 $form.addEventListener('submit', handleSubmit);
 
 // render entry & create DOM tree
-var $ulEntries = document.querySelector('ul');
 
 function renderEntry(entry) {
   var liEntry = document.createElement('li');
@@ -110,7 +116,6 @@ function handleEntryFormView(event) {
 }
 
 // show entries page
-var $saveButton = document.querySelector('button.save');
 
 $saveButton.addEventListener('click', handleEntriesView);
 
@@ -124,45 +129,26 @@ function handleEntriesView(event) {
   }
 }
 
-var $noEntriesMsg = document.querySelector('p.center');
-if (data.entries.length >= 1) {
-  $noEntriesMsg.classList = 'center hidden';
-}
-
+// edit an entry
 $ulEntries.addEventListener('click', handleEdit);
 
 function handleEdit(event) {
   if (event.target.matches('button')) {
-    for (var i = 0; i < $views.length; i++) {
-      if ($views[i].getAttribute('data-view') === 'entry-form') {
-        $views[i].className = 'view';
-      } else {
-        $views[i].className = 'view hidden';
-      }
-    }
-    // assign entry id to data.editing
+    handleEntryFormView();
+
     var $closestLi = event.target.closest('li.entry');
-    data.editing = $closestLi.getAttribute('data-entry-id');
-
-    // prepopulate edit entry, change the 'value' attribute
-    // use $closestLi
-    // get title input element & value
-    // get pic input element & value
-    // get note input element & value
-
-    // $photoURL
+    var liEntryId = $closestLi.getAttribute('data-entry-id');
     var $title = document.querySelector('input[name="title"]');
     var $notes = document.querySelector('textarea');
 
-    // for data.editing, go to entries with MATCHES entryId and
-    // find value of fields and assign to value
-
-    for (var j = 0; j < data.entries.length; j++) {
-      if (data.entries[j].entryId === parseInt(data.editing)) {
-        var editEntry = data.entries[j];
-        $title.value = editEntry.title;
-        $photoURL.value = editEntry.photo;
-        $notes.value = editEntry.notes;
+    for (var k = 0; k < data.entries.length; k++) {
+      if (data.entries[k].entryId === parseInt(liEntryId)) {
+        // assign data object to data.editing
+        data.editing = data.entries[k];
+        // prepopulate editing entry
+        $title.value = data.editing.title;
+        $photoURL.value = data.editing.photo;
+        $notes.value = data.editing.notes;
       }
     }
   }
