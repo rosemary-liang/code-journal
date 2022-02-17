@@ -38,8 +38,6 @@ function handleSubmit(event) {
     $img.setAttribute('src', 'images/placeholder-image-square.jpg');
     $form.reset();
 
-    // return entryData;
-
   } else if (data.editing !== null) {
     entryData.entryId = data.editing.entryId;
     data.editing = entryData;
@@ -48,22 +46,17 @@ function handleSubmit(event) {
         data.entries[i] = data.editing;
       }
     }
-    // query select all li's
-    // loop thru li's
-    // find and replace entry with matching id
-    // use replaceWith() method
-    // var $liEntries = document.querySelectorAll('li');
-    // for (var j = 0; j < $liEntries.length; j++) {
-    //   var replaceLi = $liEntries[j];
-    //   var liEntryID = parse($liEntries[j].getAttribute('data-entry-id'));
-    //   if (data.editing.entryId === liEntryId) {
 
-    //   }
-
-    // }
+    var $liEntries = document.querySelectorAll('li');
+    for (var j = 0; j < $liEntries.length; j++) {
+      var replaceLi = $liEntries[j];
+      var liEntryId = parseInt($liEntries[j].getAttribute('data-entry-id'));
+      if (data.editing.entryId === liEntryId) {
+        replaceLi.replaceWith(renderEntry(entryData));
+      }
+    }
   }
   data.editing = null;
-
 }
 
 $form.addEventListener('submit', handleSubmit);
