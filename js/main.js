@@ -55,7 +55,10 @@ function handleSubmit(event) {
         replaceLi.replaceWith(renderEntry(entryData));
       }
     }
+
   }
+  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $form.reset();
   data.editing = null;
 }
 
@@ -152,6 +155,9 @@ function handleEntriesView(event) {
 $ulEntries.addEventListener('click', handleEdit);
 
 function handleEdit(event) {
+  var $formHeader = document.getElementById('form-header');
+  $formHeader.innerText = 'Edit Entry';
+
   if (event.target.matches('button')) {
     handleEntryFormView();
 
@@ -168,6 +174,7 @@ function handleEdit(event) {
         $title.value = data.editing.title;
         $photoURL.value = data.editing.photo;
         $notes.value = data.editing.notes;
+        $img.setAttribute('src', $photoURL.value);
       }
     }
   }
