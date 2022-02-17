@@ -28,16 +28,42 @@ function handleSubmit(event) {
     entryId: data.nextEntryId
   };
 
-  data.nextEntryId++;
-  data.entries.unshift(entryData);
-  // submit new entry will show without reloading
-  $ulEntries.prepend(renderEntry(entryData));
-  $noEntriesMsg.classList = 'center hidden';
+  if (data.editing === null) {
+    data.nextEntryId++;
+    data.entries.unshift(entryData);
+    // submit new entry will show without reloading
+    $ulEntries.prepend(renderEntry(entryData));
+    $noEntriesMsg.classList = 'center hidden';
 
-  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
-  $form.reset();
+    $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+    $form.reset();
 
-  return entryData;
+    // return entryData;
+
+  } else if (data.editing !== null) {
+    entryData.entryId = data.editing.entryId;
+    data.editing = entryData;
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === data.editing.entryId) {
+        data.entries[i] = data.editing;
+      }
+    }
+    // query select all li's
+    // loop thru li's
+    // find and replace entry with matching id
+    // use replaceWith() method
+    // var $liEntries = document.querySelectorAll('li');
+    // for (var j = 0; j < $liEntries.length; j++) {
+    //   var replaceLi = $liEntries[j];
+    //   var liEntryID = parse($liEntries[j].getAttribute('data-entry-id'));
+    //   if (data.editing.entryId === liEntryId) {
+
+    //   }
+
+    // }
+  }
+  data.editing = null;
+
 }
 
 $form.addEventListener('submit', handleSubmit);
