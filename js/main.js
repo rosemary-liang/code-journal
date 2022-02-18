@@ -3,10 +3,17 @@
 var $photoURL = document.getElementById('user-photo-url');
 var $img = document.querySelector('img');
 var $form = document.querySelector('form');
+var $ulEntries = document.querySelector('ul');
 
 $photoURL.addEventListener('input', function (event) {
   $img.setAttribute('src', $photoURL.value);
 });
+var $noEntriesMsg = document.querySelector('p.center');
+if (data.entries.length >= 1) {
+  $noEntriesMsg.classList = 'center hidden';
+}
+
+var $saveButton = document.querySelector('button.save');
 
 // submit callback function
 function handleSubmit(event) {
@@ -21,27 +28,47 @@ function handleSubmit(event) {
     entryId: data.nextEntryId
   };
 
-  data.nextEntryId++;
-  data.entries.unshift(entryData);
-  // submit new entry will show without reloading
-  $ulEntries.prepend(renderEntry(entryData));
-  $noEntriesMsg.classList = 'center hidden';
+  if (data.editing === null) {
+    data.nextEntryId++;
+    data.entries.unshift(entryData);
+    // submit new entry will show without reloading
+    $ulEntries.prepend(renderEntry(entryData));
+    $noEntriesMsg.classList = 'center hidden';
 
+    $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+    $form.reset();
+
+  } else if (data.editing !== null) {
+    entryData.entryId = data.editing.entryId;
+    data.editing = entryData;
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === data.editing.entryId) {
+        data.entries[i] = data.editing;
+      }
+    }
+
+    var $liEntries = document.querySelectorAll('li');
+    for (var j = 0; j < $liEntries.length; j++) {
+      var replaceLi = $liEntries[j];
+      var liEntryId = parseInt($liEntries[j].getAttribute('data-entry-id'));
+      if (data.editing.entryId === liEntryId) {
+        replaceLi.replaceWith(renderEntry(entryData));
+      }
+    }
+
+  }
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
-
-  return entryData;
+  data.editing = null;
 }
 
 $form.addEventListener('submit', handleSubmit);
 
 // render entry & create DOM tree
-var $ulEntries = document.querySelector('ul');
 
 function renderEntry(entry) {
   var liEntry = document.createElement('li');
-  liEntry.setAttribute('class', 'entry column-full ');
-  $ulEntries.appendChild(liEntry);
+  liEntry.setAttribute('class', 'entry column-full');
 
   var divImg = document.createElement('div');
   divImg.setAttribute('class', 'user-img column-half column-full');
@@ -64,6 +91,14 @@ function renderEntry(entry) {
   heading3.textContent = entry.title;
   divTitle.appendChild(heading3);
 
+  var editButton = document.createElement('button');
+  editButton.setAttribute('class', 'btn');
+  divTitle.appendChild(editButton);
+
+  var iconPencil = document.createElement('i');
+  iconPencil.setAttribute('class', 'fas fa-pen');
+  editButton.appendChild(iconPencil);
+
   var divNotes = document.createElement('div');
   divNotes.setAttribute('class', 'user-notes');
   divEntryContainer.appendChild(divNotes);
@@ -72,8 +107,12 @@ function renderEntry(entry) {
   paragraphNotes.textContent = entry.notes;
   divNotes.appendChild(paragraphNotes);
 
-  return liEntry;
+  // set entryId in DOM
+  var entryId = entry.entryId;
+  liEntry.setAttribute('data-entry-id', entryId);
+  entryId++;
 
+  return liEntry;
 }
 
 // append entries
@@ -99,7 +138,6 @@ function handleEntryFormView(event) {
 }
 
 // show entries page
-var $saveButton = document.querySelector('button.save');
 
 $saveButton.addEventListener('click', handleEntriesView);
 
@@ -113,7 +151,31 @@ function handleEntriesView(event) {
   }
 }
 
-var $noEntriesMsg = document.querySelector('p.center');
-if (data.entries.length >= 1) {
-  $noEntriesMsg.classList = 'center hidden';
+// edit an entry
+$ulEntries.addEventListener('click', handleEdit);
+
+function handleEdit(event) {
+  var $formHeader = document.getElementById('form-header');
+  $formHeader.innerText = 'Edit Entry';
+
+  if (event.target.matches('button')) {
+    handleEntryFormView();
+
+    var $closestLi = event.target.closest('li.entry');
+    var liEntryId = $closestLi.getAttribute('data-entry-id');
+    var $title = document.querySelector('input[name="title"]');
+    var $notes = document.querySelector('textarea');
+
+    for (var k = 0; k < data.entries.length; k++) {
+      if (data.entries[k].entryId === parseInt(liEntryId)) {
+        // assign data object to data.editing
+        data.editing = data.entries[k];
+        // prepopulate editing entry
+        $title.value = data.editing.title;
+        $photoURL.value = data.editing.photo;
+        $notes.value = data.editing.notes;
+        $img.setAttribute('src', $photoURL.value);
+      }
+    }
+  }
 }
