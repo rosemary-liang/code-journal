@@ -4,6 +4,7 @@ var $photoURL = document.getElementById('user-photo-url');
 var $img = document.querySelector('img');
 var $form = document.querySelector('form');
 var $ulEntries = document.querySelector('ul');
+var $deleteButton = document.querySelector('#delete-button');
 
 $photoURL.addEventListener('input', function (event) {
   $img.setAttribute('src', $photoURL.value);
@@ -178,7 +179,6 @@ function handleEdit(event) {
       }
     }
     // edit entry, access delete button
-    var $deleteButton = document.querySelector('#delete-button');
     $deleteButton.className = 'delete';
 
   }
@@ -186,7 +186,6 @@ function handleEdit(event) {
 
 var $modal = document.querySelector('.modal');
 var $cancelButton = document.querySelector('.modal-cancel');
-var $deleteButton = document.querySelector('.delete-entry-button');
 // var $confirmButton = document.querySelector('.modal-confirm');
 
 function openModal(event) {

@@ -145,13 +145,28 @@ p.center {
 .modal-content {
   background-color: white;
   margin: auto;
-  padding: 0.5rem;
+  padding: 0.8rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  height: 8rem;
   font-size: 0.9rem;
   font-weight: bold;
   z-index: 2;
   border-radius: 5px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-cancel {
+  background-color: rgb(190, 188, 188);
+  color: black;
+}
+
+.modal-confirm {
+  background-color: red;
+  color: white;
 }
