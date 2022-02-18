@@ -55,8 +55,15 @@ button {
   justify-content: flex-end;
 }
 
-a.delete {
+button.delete {
   color: red;
+  text-decoration: underline;
+  background-color: whitesmoke;
+  font-size: 1rem;
+}
+
+.hide-delete-button {
+  display: none;
 }
 
 div.button {
@@ -114,4 +121,37 @@ img {
 
 p.center {
   text-align: center;
+}
+
+/* modal */
+
+.modal-off {
+  display: none;
+}
+
+.modal-on {
+  position: absolute;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  right: 0;
+  background-color: rgb(0 0 0 / 75%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  margin: auto;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  z-index: 2;
+  border-radius: 5px;
 }

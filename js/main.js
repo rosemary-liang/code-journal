@@ -158,13 +158,6 @@ function handleEdit(event) {
   var $formHeader = document.getElementById('form-header');
   $formHeader.innerText = 'Edit Entry';
 
-  var $deleteParent = document.querySelector('div.button');
-  var $deleteButton = document.createElement('a');
-  $deleteButton.setAttribute('class', 'delete');
-  $deleteButton.setAttribute('href', '#delete');
-  $deleteButton.innerText = 'Delete entry';
-  $deleteParent.prepend($deleteButton);
-
   if (event.target.matches('button')) {
     handleEntryFormView();
 
@@ -184,5 +177,30 @@ function handleEdit(event) {
         $img.setAttribute('src', $photoURL.value);
       }
     }
+    // edit entry, access delete button
+    var $deleteButton = document.querySelector('#delete-button');
+    $deleteButton.className = 'delete';
+
   }
 }
+
+var $modal = document.querySelector('.modal');
+var $cancelButton = document.querySelector('.modal-cancel');
+var $deleteButton = document.querySelector('.delete-entry-button');
+// var $confirmButton = document.querySelector('.modal-confirm');
+
+function openModal(event) {
+  $modal.className = 'modal modal-on';
+}
+
+function closeModal(event) {
+  $modal.className = 'modal modal-off';
+}
+
+// function deleteEntry(event) {
+
+// }
+
+$deleteButton.addEventListener('click', openModal);
+$cancelButton.addEventListener('click', closeModal);
+// $confirmButton.addEventListener('click', deleteEntry);
