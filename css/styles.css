@@ -55,6 +55,15 @@ button {
   justify-content: flex-end;
 }
 
+a.delete {
+  color: red;
+}
+
+div.button {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* data-view entries start */
 .entries-header {
   display: flex;

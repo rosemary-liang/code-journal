@@ -158,6 +158,13 @@ function handleEdit(event) {
   var $formHeader = document.getElementById('form-header');
   $formHeader.innerText = 'Edit Entry';
 
+  var $deleteParent = document.querySelector('div.button');
+  var $deleteButton = document.createElement('a');
+  $deleteButton.setAttribute('class', 'delete');
+  $deleteButton.setAttribute('href', '#delete');
+  $deleteButton.innerText = 'Delete entry';
+  $deleteParent.prepend($deleteButton);
+
   if (event.target.matches('button')) {
     handleEntryFormView();
 
