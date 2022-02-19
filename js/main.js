@@ -137,6 +137,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
 var $views = document.querySelectorAll('.view');
 var $newButton = document.querySelector('a.new-button');
 $newButton.addEventListener('click', handleEntryFormView);
+$newButton.addEventListener('click', saveButtonRight);
 
 function handleEntryFormView(event) {
   for (var i = 0; i < $views.length; i++) {
@@ -146,6 +147,11 @@ function handleEntryFormView(event) {
       $views[i].className = 'view hidden';
     }
   }
+}
+
+function saveButtonRight(event) {
+  var $changeButtonClass = document.querySelector('#change-button-class');
+  $changeButtonClass.className = 'input-container column-full button-flex-end';
 }
 
 // show entries page
@@ -168,6 +174,13 @@ $ulEntries.addEventListener('click', handleEdit);
 function handleEdit(event) {
   var $formHeader = document.getElementById('form-header');
   $formHeader.innerText = 'Edit Entry';
+
+  function buttonSpaceBetween(event) {
+    var $changeButtonClass = document.querySelector('#change-button-class');
+    $changeButtonClass.className = 'input-container column-full button-space-between';
+  }
+
+  buttonSpaceBetween();
 
   if (event.target.matches('button')) {
     handleEntryFormView();

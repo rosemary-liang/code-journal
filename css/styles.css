@@ -50,9 +50,14 @@ button {
   border: none;
 }
 
-.button {
+.button-flex-end {
   display: flex;
   justify-content: flex-end;
+}
+
+.button-space-between {
+  display: flex;
+  justify-content: space-between;
 }
 
 button.delete {
@@ -64,11 +69,6 @@ button.delete {
 
 .hide-delete-button {
   display: none;
-}
-
-div.button {
-  display: flex;
-  justify-content: space-between;
 }
 
 /* data-view entries start */
@@ -169,4 +169,5 @@ p.center {
 .modal-confirm {
   background-color: red;
   color: white;
+}
 }
