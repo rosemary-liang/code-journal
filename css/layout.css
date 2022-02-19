@@ -66,6 +66,10 @@ img {
   .input-container {
     margin: 0;
   }
+
+  #change-button-class {
+    margin-bottom: 2rem;
+  }
 }
 
 input {
