@@ -222,9 +222,6 @@ function closeModal(event) {
 
 }
 
-// find entry in DOM tree and delete
-// find entry in data object and delete
-// return to entries view
 function deleteEntry(event) {
   var $lis = document.querySelectorAll('.entry');
 
