@@ -242,7 +242,6 @@ function deleteEntry(event) {
   resetForm();
   handleEntriesView();
   hideNoEntriesMsg();
-
 }
 
 $deleteButton.addEventListener('click', openModal);
