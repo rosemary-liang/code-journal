@@ -4,16 +4,24 @@ var $photoURL = document.getElementById('user-photo-url');
 var $img = document.querySelector('img');
 var $form = document.querySelector('form');
 var $ulEntries = document.querySelector('ul');
+var $saveButton = document.querySelector('button.save');
+var $deleteButton = document.querySelector('#delete-button');
 
 $photoURL.addEventListener('input', function (event) {
   $img.setAttribute('src', $photoURL.value);
 });
+
 var $noEntriesMsg = document.querySelector('p.center');
-if (data.entries.length >= 1) {
-  $noEntriesMsg.classList = 'center hidden';
+
+function hideNoEntriesMsg(event) {
+  if (data.entries.length >= 1) {
+    $noEntriesMsg.classList = 'center hidden';
+  } else {
+    $noEntriesMsg.classList = 'center';
+  }
 }
 
-var $saveButton = document.querySelector('button.save');
+hideNoEntriesMsg();
 
 // submit callback function
 function handleSubmit(event) {
@@ -57,9 +65,12 @@ function handleSubmit(event) {
     }
 
   }
+  resetForm();
+}
+
+function resetForm(event) {
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
-  data.editing = null;
 }
 
 $form.addEventListener('submit', handleSubmit);
@@ -126,6 +137,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
 var $views = document.querySelectorAll('.view');
 var $newButton = document.querySelector('a.new-button');
 $newButton.addEventListener('click', handleEntryFormView);
+$newButton.addEventListener('click', saveButtonRight);
 
 function handleEntryFormView(event) {
   for (var i = 0; i < $views.length; i++) {
@@ -135,6 +147,11 @@ function handleEntryFormView(event) {
       $views[i].className = 'view hidden';
     }
   }
+}
+
+function saveButtonRight(event) {
+  var $changeButtonClass = document.querySelector('#change-button-class');
+  $changeButtonClass.className = 'input-container column-full button-flex-end';
 }
 
 // show entries page
@@ -158,6 +175,13 @@ function handleEdit(event) {
   var $formHeader = document.getElementById('form-header');
   $formHeader.innerText = 'Edit Entry';
 
+  function buttonSpaceBetween(event) {
+    var $changeButtonClass = document.querySelector('#change-button-class');
+    $changeButtonClass.className = 'input-container column-full button-space-between';
+  }
+
+  buttonSpaceBetween();
+
   if (event.target.matches('button')) {
     handleEntryFormView();
 
@@ -177,5 +201,49 @@ function handleEdit(event) {
         $img.setAttribute('src', $photoURL.value);
       }
     }
+    // edit entry, access delete button
+    $deleteButton.className = 'delete';
+    return data.editing;
   }
 }
+
+// delete entry modal
+var $modal = document.querySelector('.modal');
+var $cancelButton = document.querySelector('.modal-cancel');
+var $confirmButton = document.querySelector('.modal-confirm');
+
+function openModal(event) {
+  $modal.className = 'modal modal-on';
+
+}
+
+function closeModal(event) {
+  $modal.className = 'modal modal-off';
+
+}
+
+function deleteEntry(event) {
+  var $lis = document.querySelectorAll('.entry');
+
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.editing === data.entries[i]) {
+      data.entries.splice(i, 1);
+    }
+  }
+
+  for (var j = 0; j < $lis.length; j++) {
+    if (data.editing.entryId === parseInt($lis[j].getAttribute('data-entry-id'))) {
+      $lis[j].remove();
+    }
+  }
+
+  data.editing = null;
+  closeModal();
+  resetForm();
+  handleEntriesView();
+  hideNoEntriesMsg();
+}
+
+$deleteButton.addEventListener('click', openModal);
+$cancelButton.addEventListener('click', closeModal);
+$confirmButton.addEventListener('click', deleteEntry);

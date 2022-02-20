@@ -54,6 +54,24 @@ img {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .entry-text-container {
+    margin-top: 1rem;
+  }
+
+  .single-line-input-container {
+    margin-top: 1rem;
+  }
+
+  .input-container {
+    margin: 0;
+  }
+
+  #change-button-class {
+    margin-bottom: 2rem;
+  }
+}
+
 input {
   width: 100%;
   height: 2rem;
